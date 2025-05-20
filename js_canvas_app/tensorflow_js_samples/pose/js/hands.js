@@ -6,7 +6,7 @@ let detector;
 
 async function setupCamera() {
     const stream = await navigator.mediaDevices.getUserMedia({
-        video: { width: 640, height: 480 }
+        video: { width: 1280, height: 960 }
     });
     video.srcObject = stream;
     await video.play();
