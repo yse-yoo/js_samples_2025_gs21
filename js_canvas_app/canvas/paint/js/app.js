@@ -36,9 +36,9 @@ function startDrawing(x, y) {
 function draw(x, y) {
     if (!isDrawing) return;
     // TODO: 前回の位置から現在の位置まで線を描画
-    // ctx.beginPath();
-    // ctx.moveTo(lastX, lastY);
-    // ctx.lineTo(x, y);
+    ctx.beginPath();
+    ctx.moveTo(lastX, lastY);
+    ctx.lineTo(x, y);
 
     // 現在の色と線の太さを適用
     ctx.strokeStyle = currentColor;
@@ -59,7 +59,7 @@ function endDrawing() {
 
 // イベント
 // TODO: マウスダウン: mousedown
-canvas.addEventListener('', (e) => {
+canvas.addEventListener('mousedown', (e) => {
     const rect = canvas.getBoundingClientRect();
     startDrawing(e.clientX - rect.left, e.clientY - rect.top);
 });
@@ -76,7 +76,7 @@ canvas.addEventListener('touchstart', (e) => {
 // Mac: Cmd + Shift + R
 // マウス移動
 // TODO: マウス移動: mousemove
-canvas.addEventListener('', (e) => {
+canvas.addEventListener('mousemove', (e) => {
     // TODO: getBoundingClientRect() 座標取得
     const rect = canvas.getBoundingClientRect();
     // マウスイベント e でマウスの座標を取得
@@ -103,13 +103,14 @@ canvas.addEventListener('touchcancel', endDrawing);
 // コントロール変更時のイベントリスナー
 colorPicker.addEventListener('change', (e) => {
     // TODO: 色変更処理: currentColor に target.value 設定
-    // currentColor = e.target.value;
+    currentColor = e.target.value;
 });
 
 // 太さ入力
 lineWidthRange.addEventListener('input', (e) => {
     // TODO: 色変更処理: currentLineWidth に target.value 設定
-    // lineWidthValue.textContent = currentLineWidth;
+    currentLineWidth = e.target.value;
+    lineWidthValue.textContent = currentLineWidth;
 });
 
 // リセットボタンクリック
