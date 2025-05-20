@@ -6,9 +6,6 @@ const numObstacles = 20;
 // TODO: プレイヤーのサイズ
 const playerSize = 20;
 
-ambientLight(100); // 全体的な明るさ
-directionalLight(255, 255, 255, -1, -1, -1);
-
 function preload() {
     playerImage = loadImage("assets/player.png");
 }
