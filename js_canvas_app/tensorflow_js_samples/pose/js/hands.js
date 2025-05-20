@@ -17,7 +17,7 @@ async function setupModel() {
     detector = await handPoseDetection.createDetector(model, {
         runtime: 'mediapipe',
         solutionPath: 'https://cdn.jsdelivr.net/npm/@mediapipe/hands',
-        modelType: 'full',      // or 'full'
+        modelType: '',      // lite or 'full'
         maxHands: 2,            // ← 両手を認識するために必要！
     });
 }
@@ -35,8 +35,9 @@ function drawHandLandmarks(keypoints) {
 
 async function detectHands() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    const hands = await detector.estimateHands(video, { flipHorizontal: false });
-    hands.forEach(hand => {
+    const hands = await detector.estimateHands(video, { flipHorizontal: true });
+
+    hands.forEach((hand, index) => {
         drawHandLandmarks(hand.keypoints);
     });
     requestAnimationFrame(detectHands);
