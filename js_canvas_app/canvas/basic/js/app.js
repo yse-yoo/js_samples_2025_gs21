@@ -29,10 +29,13 @@ function drawTriangle() {
     ctx.beginPath();
     // 三角形を描画
     // TODO: 座標移動: x, y = 50, 0
+    ctx.moveTo(150, 0);
 
     // TODO: 線を引く: x, y = 150, 0
+    ctx.lineTo(250, 0);
 
     // TODO: 線を引く: x, y = 100, 100
+    ctx.lineTo(200, 100);
 
     // パス終了
     ctx.closePath();
