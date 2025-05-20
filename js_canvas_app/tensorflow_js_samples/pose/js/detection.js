@@ -24,9 +24,9 @@ async function setupCamera() {
         video: { width: 640, height: 480 }
     };
     // TODO: Webカメラのセットアップ
-    // const stream = await navigator.mediaDevices.getUserMedia(config);
-    // video.srcObject = stream;
-    // await video.play();
+    const stream = await navigator.mediaDevices.getUserMedia(config);
+    video.srcObject = stream;
+    await video.play();
 }
 
 /**
@@ -40,10 +40,10 @@ function drawKeypoints(keypoints) {
             const x = point.x * canvas.width / video.videoWidth;
             const y = point.y * canvas.height / video.videoHeight;
             // TODO: 描画
-            // ctx.beginPath();
-            // ctx.arc(x, y, 2, 0, 2 * Math.PI);
-            // ctx.fillStyle = 'white';
-            // ctx.fill();
+            ctx.beginPath();
+            ctx.arc(x, y, 2, 0, 2 * Math.PI);
+            ctx.fillStyle = 'white';
+            ctx.fill();
         }
     });
 }
@@ -67,12 +67,12 @@ function drawSkeleton(keypoints) {
             const y2 = p2.y * canvas.height / video.videoHeight;
 
             // TODO: 骨格を描画
-            // ctx.beginPath();
-            // ctx.moveTo(x1, y1);
-            // ctx.lineTo(x2, y2);
-            // ctx.strokeStyle = 'red';
-            // ctx.lineWidth = 1;
-            // ctx.stroke();
+            ctx.beginPath();
+            ctx.moveTo(x1, y1);
+            ctx.lineTo(x2, y2);
+            ctx.strokeStyle = 'red';
+            ctx.lineWidth = 1;
+            ctx.stroke();
         }
     });
 }
