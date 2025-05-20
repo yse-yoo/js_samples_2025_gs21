@@ -17,8 +17,8 @@ async function setupModel() {
     detector = await handPoseDetection.createDetector(model, {
         runtime: 'mediapipe',
         solutionPath: 'https://cdn.jsdelivr.net/npm/@mediapipe/hands',
-        modelType: 'lite',
-        maxHands: 1,
+        modelType: 'full',      // or 'full'
+        maxHands: 2,            // ← 両手を認識するために必要！
     });
 }
 
